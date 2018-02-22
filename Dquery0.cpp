@@ -18,8 +18,8 @@ public:
 	node(int left , int right, int index )
 	{
 		i = index;//ORIGINAL INDEX OF QUERY
-		l = left ;//NAAM HI KAAFI HAI
-		r = right;// ||
+		l = left ;
+		r = right;
 	}
 	friend ostream& operator<<(ostream &out , node &a)
 	{
@@ -89,13 +89,8 @@ int main()
 		query.push_back(node(a-1,b-1,i));
 	}
 
-	//for(auto x:query)
-	//	cout<<x;
-
 	sort(query.begin() , query.end(),mycomparison);
 
-//	for(auto x:query)
-//		cout<<x;
 //**************************************************************
 
 	int left_move = 0;
@@ -106,35 +101,30 @@ int main()
 	{
 		int left = x.l;
 		int right = x.r;
-		//cout<<"FOR "<<x.i<<":";
+
 		while(left_move < left)
 		{
-			//cout<<left_move<<endl;
 			rem(left_move);
 			left_move++;
 		}
 		while(left_move > left)
 		{
-			//cout<<left_move-1<<endl;
 			add(left_move-1);
 			left_move--;
 		}
-		//cout<<"answerr : "<<answer<<endl;
 		while(right_move <= right)
 		{
-			//cout<<right_move<<endl;
 			add(right_move);
 			right_move++;
 		}
 		while(right_move > right+1)
 		{
-			//cout<<right_move<<endl;
 			rem(right_move-1);
 			right_move--;
 		}
 		ans[x.i] = answer;
-		//cout<<x.i<<" "<<answer<<endl;
 	}
+	
 	for (auto p : ans)
 		printf("%i\n",p);
 }
